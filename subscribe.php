@@ -32,6 +32,7 @@ class ControllerMailSubscribe extends Controller {
 	$mail->setSender('admin@your_store.ru');
 	$mail->setSubject('Новый подписчик на сайте');
 	$mail->setHtml($this->load->view('mail/subscribe', $data));
-	$mail->send();		
+	$mail->send();
+	$this->add_subscriber();	
     }    
 }
