@@ -9,7 +9,7 @@
 <script>
 $(".subscribe").on('submit', function(e){
 e.preventDefault();
-if( $('.email').val() !== '') {
+if( $('.email').val() !== '' && $('.anti-bot').val() == ''  ) {
         $.ajax({  
             url: 'index.php?route=mail/subscribe/send',  
             type:"POST",  
