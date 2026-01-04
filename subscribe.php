@@ -20,7 +20,7 @@ class ControllerMailSubscribe extends Controller {
 		   );
 		}     
 	$mail->setTo($from);
-	$mail->setFrom($from);
+	$mail->setFrom('admin@your_store.ru');
 	$mail->setSender('admin@your_store.ru');
 	$mail->setSubject('Новый подписчик на сайте');
 	$mail->setHtml($this->load->view('mail/subscribe', $data));
