@@ -13,9 +13,12 @@ class ControllerMailSubscribe extends Controller {
 		$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 		$data = array();
-		foreach ($json as $key => $val) {
-           $data['text'] .= $key.':' .$val.'<br>';
-		}      
+		foreach($json as $key => $val) {          
+          $data['subscriber'][] = array(
+               'text' => $key,
+               'value' => $val
+		   );
+		}     
 		$mail->setTo($from);
 		$mail->setFrom($from);
 		$mail->setSender('admin@your_store.ru');
