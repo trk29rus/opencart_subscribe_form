@@ -1,9 +1,17 @@
 <?php 
-class ControllerMailSubscribe extends Controller {   
+class ControllerMailSubscribe extends Controller { 
+	
+   // запись email в БД
+    public function add_subscriber() {
+        $json = $this->request->post;
+        $this->load->model('mail/subscribe');
+        $this->model_mail_subscribe->add_subscriber($json);
+    }
+	
+	// отправка письма админу при новом подписчике
     public function send() {   
     $this->load->model('setting/setting');
-    $json = $this->request->post; 
-    // отправка письма админу при новом подписчике
+    $json = $this->request->post;     
     $mail = new Mail($this->config->get('config_mail_engine'));
     $from = $this->config->get('config_email'); 
     $mail->parameter = $this->config->get('config_mail_parameter');
