@@ -4,8 +4,8 @@ class ControllerMailSubscribe extends Controller {
    // запись email в БД
     public function add_subscriber() {
         $json = $this->request->post;
-        $this->load->model('mail/subscriber');
-        $this->model_mail_subscriber->add_subscriber($json);
+        $this->load->model('mail/subscribe');
+        $this->model_mail_subscribe->add_subscriber($json);
     }
 	
 	// отправка письма админу при новом подписчике
