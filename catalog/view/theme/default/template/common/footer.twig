@@ -1,1 +1,27 @@
+<!--Добавить в нужном меcте шаблона-->
+<form class="subscribe">
+          <input type="text" name="email" class="email" placeholder="подписаться на рассылку">
+          <input type="hidden" name="name" class="anti-bot" value=''>
+          <input type="submit" value="ок" style="color:#000">
+          <div class="subscribe-notice"></div>
+</form>
 
+<script>
+$(".subscribe").on('submit', function(e){
+e.preventDefault();
+if( $('.email').val() !== '' && $('.anti-bot').val() == ''  ) {
+        $.ajax({  
+            url: 'index.php?route=mail/subscribe/send',  
+            type:"POST",  
+            data:$(this).serialize(),  
+            dataType:'text',  
+            success:function(data) {   
+                $('.subscribe-notice').text('Успешная подписка!'); 
+            }  
+        })
+    }
+else {
+       $('.subscribe-notice').text('Введите ваш email'); 
+     }
+});
+</script>
