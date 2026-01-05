@@ -10,7 +10,7 @@ class ControllerMailSubscribe extends Controller {
           $this->model_mail_subscribe->add_subscriber($json);
 		}
 		catch (Exception $e) {
-	       $this->response->setOutput($e->getMessage());
+	      $this->response->setOutput($e->getMessage());
 		} 	
     }
 	
