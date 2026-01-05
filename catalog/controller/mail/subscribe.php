@@ -5,7 +5,13 @@ class ControllerMailSubscribe extends Controller {
     public function add_subscriber() {
         $json = $this->request->post;
         $this->load->model('mail/subscribe');
-        $this->model_mail_subscribe->add_subscriber($json);
+		try {
+		  $this->response->setOutput('Успешная подписка');
+          $this->model_mail_subscribe->add_subscriber($json);
+		}
+		catch (Exception $e) {
+	       $this->response->setOutput($e->getMessage());
+		} 	
     }
 	
 	// отправка письма админу при новом подписчике
