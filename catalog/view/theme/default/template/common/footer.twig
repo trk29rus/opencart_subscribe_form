@@ -16,7 +16,7 @@ if( $('.email').val() !== '' && $('.anti-bot').val() == ''  ) {
             data:$(this).serialize(),  
             dataType:'text',  
             success:function(data) {   
-                $('.subscribe-notice').text('Успешная подписка!'); 
+                $('.subscribe-notice').text(data); 
             }  
         })
     }
