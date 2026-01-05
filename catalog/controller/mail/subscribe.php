@@ -28,11 +28,11 @@ class ControllerMailSubscribe extends Controller {
 	$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 	$data = array();
 	foreach($json as $key => $val) {          
-          $data['subscriber'][] = array(
+        $data['subscriber'][] = array(
                'text' => $key,
                'value' => $val
-		   );
-		}     
+		);
+	}     
 	$mail->setTo($from);
 	$mail->setFrom('admin@your_store.ru');
 	$mail->setSender('admin@your_store.ru');
