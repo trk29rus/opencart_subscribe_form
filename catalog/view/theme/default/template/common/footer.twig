@@ -32,7 +32,7 @@ else {
     }
 }
 
-if( email !== '' && check_email(email) && $('.anti-bot').val() == ''  ) {
+if( check_email(email) && $('.anti-bot').val() == ''  ) {
         $.ajax({  
             url: 'index.php?route=mail/subscribe/send',  
             type:"POST",  
