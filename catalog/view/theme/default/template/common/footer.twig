@@ -9,7 +9,30 @@
 <script>
 $(".subscribe").on('submit', function(e){
 e.preventDefault();
-if( $('.email').val() !== '' && $('.anti-bot').val() == ''  ) {
+let email = $('.email').val();
+
+// валидация адреса почты
+function validate(email) {
+  let pattern = /\S+@\S+\.\S+/;
+  return pattern.test(email);
+}
+
+// проверка адреса почты
+function check_email(email) {
+if (email == '') {
+     $('.subscribe-notice').html('<span style="color:red">Введите ваш email</span>');
+     return false;
+    }
+if (validate(email) == false) {
+     $('.subscribe-notice').html('<span style="color:red">Введен некорректный email</span>'); 
+     return false;
+    }
+else {
+     return true;
+    }
+}
+
+if( email !== '' && check_email(email) && $('.anti-bot').val() == ''  ) {
         $.ajax({  
             url: 'index.php?route=mail/subscribe/send',  
             type:"POST",  
@@ -21,7 +44,7 @@ if( $('.email').val() !== '' && $('.anti-bot').val() == ''  ) {
         })
     }
 else {
-       $('.subscribe-notice').text('Введите ваш email'); 
+       check_email(email); 
      }
 });
 </script>
